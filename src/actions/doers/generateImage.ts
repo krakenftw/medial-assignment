@@ -7,9 +7,11 @@ import {
 } from "canvas";
 import path from "path";
 
-registerFont(path.join(process.cwd(), "fonts", "Inter.ttf"), {
+const fontPath = path.join(process.cwd(), "public", "fonts", "Inter.ttf");
+registerFont(fontPath, {
   family: "Inter",
 });
+console.log("Font path:", fontPath);
 
 function wrapText(
   context: CanvasRenderingContext2D,
