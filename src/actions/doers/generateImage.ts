@@ -1,5 +1,15 @@
 import { supabase } from "@/lib/supabase";
-import { createCanvas, loadImage, CanvasRenderingContext2D } from "canvas";
+import {
+  createCanvas,
+  loadImage,
+  CanvasRenderingContext2D,
+  registerFont,
+} from "canvas";
+import path from "path";
+
+registerFont(path.join(process.cwd(), "fonts", "Inter.ttf"), {
+  family: "Inter",
+});
 
 function wrapText(
   context: CanvasRenderingContext2D,
