@@ -1,0 +1,30 @@
+{
+  "1": {
+    "title": "test",
+    "content": "This is testing stuff"
+  },
+  "97d7cd28-aafb-498e-bf63-60abde18e05f": {
+    "id": "97d7cd28-aafb-498e-bf63-60abde18e05f",
+    "title": "I am batman",
+    "content": "yes, its true",
+    "createdAt": "2024-08-05T14:15:47.108Z"
+  },
+  "1fc6f697-ecdb-4836-9f13-1414077de80f": {
+    "id": "1fc6f697-ecdb-4836-9f13-1414077de80f",
+    "title": "I am batman",
+    "content": "yes, its true",
+    "createdAt": "2024-08-05T14:16:29.104Z"
+  },
+  "ce3958e5-21e0-491c-a308-bc0e42f3bc35": {
+    "id": "ce3958e5-21e0-491c-a308-bc0e42f3bc35",
+    "title": "I am batman",
+    "content": "Its true, honestly",
+    "createdAt": "2024-08-05T14:18:18.080Z"
+  },
+  "b4a4f4ac-43e2-4fca-b88f-e1b9bda44482": {
+    "id": "b4a4f4ac-43e2-4fca-b88f-e1b9bda44482",
+    "title": "This is being a test post",
+    "content": "Lets fucking goo...",
+    "createdAt": "2024-08-05T14:22:04.370Z"
+  }
+}
