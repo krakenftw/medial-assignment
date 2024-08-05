@@ -50,13 +50,13 @@ export async function generateOgImage(
     );
     context.drawImage(image, 50, 50, 100, 100);
 
-    context.font = "bold 60px Arial";
+    context.font = "bold 60px Inter";
     context.fillStyle = "#ffffff";
     context.textAlign = "left";
     context.textBaseline = "top";
     wrapText(context, title, 50, 180, width - 100, 70);
 
-    context.font = "32px Arial";
+    context.font = "32px Inter";
     context.fillStyle = "#d7dadc";
     wrapText(
       context,
@@ -69,7 +69,7 @@ export async function generateOgImage(
 
     context.fillStyle = "#4e4e4e";
     context.fillRect(0, height - 80, width, 80);
-    context.font = "bold 32px Arial";
+    context.font = "bold 32px Inter";
     context.fillStyle = "#ffffff";
     context.fillText("I will be a great intern btw!", 50, height - 50);
 
