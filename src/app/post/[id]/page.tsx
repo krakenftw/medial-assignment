@@ -17,8 +17,8 @@ export async function generateMetadata(
   const ogImageUrl = `${process.env.NEXT_PUBLIC_SUPABASE_IMAGE}/${id}.png`;
   return {
     openGraph: {
-      title: data.title,
-      description: data.content,
+      title: data?.title!,
+      description: data?.content!,
       images: [ogImageUrl],
     },
   };
@@ -40,7 +40,6 @@ export default async function Post({ params }: { params: { id: string } }) {
         <span className="mr-4">
           Posted {formatDistanceToNow(new Date(data.createdAt))} ago
         </span>
-        <span>by {data.author || "Anonymous"}</span>
       </div>
       <div className="prose max-w-none mb-6">{data.content}</div>
       <div className="mt-8">

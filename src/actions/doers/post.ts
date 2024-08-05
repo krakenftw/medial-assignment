@@ -1,7 +1,9 @@
+import connectMongo from "@/lib/db";
+import { Post } from "@/schema/post";
 import { promises as fs } from "fs";
 
 export const getPostData = async (id: string) => {
-  const data: any = await fs.readFile(process.cwd() + "/data.json", "utf8");
-  const postData = JSON.parse(data)[id];
+  await connectMongo();
+  const postData = await Post.findOne({ _id: id });
   return postData;
 };

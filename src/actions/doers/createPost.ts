@@ -1,9 +1,9 @@
 "use server";
 
-import fs from "fs/promises";
-import path from "path";
 import { v4 as uuidv4 } from "uuid";
 import { generateOgImage } from "./generateImage";
+import { Post } from "@/schema/post";
+import connectMongo from "@/lib/db";
 
 export async function createPost(formData: FormData) {
   const title = formData.get("title") as string;
@@ -14,27 +14,19 @@ export async function createPost(formData: FormData) {
   }
 
   const id = uuidv4();
-  const post = {
-    id,
-    title,
-    content,
-    createdAt: new Date().toISOString(),
-  };
-
-  const dataFilePath = path.join(process.cwd(), "data.json");
+  await connectMongo();
 
   try {
-    let posts = [];
-    try {
-      const fileContents = await fs.readFile(dataFilePath, "utf8");
-      posts = JSON.parse(fileContents);
-    } catch (error) {}
+    await generateOgImage(title, content, id);
 
-    posts[id] = post;
+    const post = new Post({
+      _id: id,
+      title,
+      content,
+      createdAt: new Date(),
+    });
 
-    await fs.writeFile(dataFilePath, JSON.stringify(posts, null, 2));
-
-    await generateOgImage(id);
+    await post.save();
 
     return { success: true, id };
   } catch (error) {

@@ -1,6 +1,5 @@
 import { supabase } from "@/lib/supabase";
 import { createCanvas, loadImage, CanvasRenderingContext2D } from "canvas";
-import { getPostData } from "./post";
 
 function wrapText(
   context: CanvasRenderingContext2D,
@@ -32,12 +31,11 @@ function wrapText(
   }
 }
 
-export async function generateOgImage(id: string) {
-  const postData = await getPostData(id);
-  if (!postData) {
-    return null;
-  }
-
+export async function generateOgImage(
+  title: string,
+  content: string,
+  id: string,
+) {
   try {
     const width = 1200;
     const height = 630;
@@ -56,13 +54,13 @@ export async function generateOgImage(id: string) {
     context.fillStyle = "#ffffff";
     context.textAlign = "left";
     context.textBaseline = "top";
-    wrapText(context, postData.title, 50, 180, width - 100, 70);
+    wrapText(context, title, 50, 180, width - 100, 70);
 
     context.font = "32px Arial";
     context.fillStyle = "#d7dadc";
     wrapText(
       context,
-      postData.content.substring(0, 100) + "...",
+      content.substring(0, 100) + "...",
       50,
       400,
       width - 100,
@@ -85,7 +83,6 @@ export async function generateOgImage(id: string) {
       return null;
     }
 
-    console.log(data);
     return data.path;
   } catch (error) {
     console.error("Error generating og:image:", error);
